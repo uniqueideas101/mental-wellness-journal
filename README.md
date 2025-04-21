@@ -1,4 +1,4 @@
-# Mental Wellness Journal 🧠✨
+# Mental Wellness Journal 
 
 A simple and aesthetic web app to track your mood and journal your thoughts. Built using HTML, CSS, and JavaScript.
 
