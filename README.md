@@ -6,9 +6,6 @@ A simple and aesthetic web app to track your mood and journal your thoughts. Bui
 - Mood tracker
 - Daily journal entries
 
-## Demo
-[Insert link here if hosted]
-
 ## How to Run
 1. Clone the repository
 2. Open `index.html` in your browser
