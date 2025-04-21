@@ -1,2 +1,27 @@
-# mental-wellness-journal
-Includes a notebook to gather thoughts which can be saved. Also includes different types of list(happy, angry, etc) to engage the users for a fun yet thoughtful activity.
+# Mental Wellness Journal 🧠✨
+
+A simple and aesthetic web app to track your mood and journal your thoughts. Built using HTML, CSS, and JavaScript.
+
+## Features
+- Mood tracker
+- Daily journal entries
+
+## Demo
+[Insert link here if hosted]
+
+## How to Run
+1. Clone the repository
+2. Open `index.html` in your browser
+
+## Tech Stack
+- HTML
+- CSS
+- JavaScript
+
+## Future Improvements
+- User authentication
+- Dark mode
+- Dashboard with data visualization
+
+## Author
+divya

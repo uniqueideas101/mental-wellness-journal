@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Wellness Journal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  
+  <div class="container">
+    <nav class="tabs">
+      <h2>What's on your mind today?</h2>
+      <button class="tab" data-tab="journal"><b>Journal</b></button>
+      <button class="tab" data-tab="happy"><b>Happy </b></button>
+      <button class="tab" data-tab="gratitude"><b>Gratitude List</b></button>
+      <button class="tab" data-tab="angry"><b>Angry List</b></button>
+    </nav>
+
+    <div class="views">
+      <div class="view active" id="welcome">
+        <div class="intro">
+          <pre><i>In pages I pour the storm inside,
+                  Where ink becomes the tide I ride.
+          </i></pre>
+        </div>
+      </div>
+      <div class="view" id="journal">
+        <div class="content-area">
+          <header>
+            <h1><i><b>Vent Out, Peace In...</b></i></h1>
+          </header>
+          <section class="entry">
+            <textarea id="entryInput" placeholder="Vent it out. You are safe here."></textarea>
+            <button id="save">Preserve</button>
+          </section>
+    
+          <section class="entries" id="entryList">Your entries will appear here.</section>
+        </div>
+      </div>
+      <div class="view" id="happy">
+        <div class="happy-list">
+          <h2>You look good smiling.😊 </h2>
+        <ul id="happyList">
+          <li><input type="text" placeholder="Type here..."/></li>
+          <li><input type="text" placeholder="Another happy thing..."/></li>
+          <li><input type="text" placeholder="Don't hold back..."/></li>
+        </ul>
+        </div>
+        <button class="add">Add more!</button>
+      </div>
+      <div class="view" id="gratitude">
+        <div class="gratitude-list">
+          <h2>Thank the universe.💫</h2>
+        <ul id="gratitudeList">
+          <li><input type="text" placeholder="Type here..."/></li>
+          <li><input type="text" placeholder="Another thing..."/></li>
+          <li><input type="text" placeholder="Don't hold back..."/></li>
+        </ul>
+        </div>
+        <button class="add">Add more!</button>
+      </div>
+      </div>
+      <div class="view" id="angry">
+        <div class="angry-list">
+          <h2>We'll see these next time.🔥</h2>
+        <ul id="angryList">
+          <li><input type="text" placeholder="Type here..."/></li>
+          <li><input type="text" placeholder="Another..."/></li>
+          <li><input type="text" placeholder="Don't hold back..."/></li>
+        </ul>
+        </div>
+        <button class="add">Add more!</button>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
