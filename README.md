@@ -5,6 +5,7 @@ A simple and aesthetic web app to track your mood and journal your thoughts. Bui
 ## Features
 - Mood tracker
 - Daily journal entries
+- localstorage
 
 ## How to Run
 1. Clone the repository
@@ -14,6 +15,7 @@ A simple and aesthetic web app to track your mood and journal your thoughts. Bui
 - HTML
 - CSS
 - JavaScript
+- localstorage
 
 ## Future Improvements
 - User authentication
