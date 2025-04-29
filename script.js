@@ -16,21 +16,77 @@ const saveBtn = document.getElementById("save");
 const entryInput = document.getElementById("entryInput");
 const entryList = document.getElementById("entryList");
 
-saveBtn.addEventListener("click", function (){
-  entryList.innerText = "";
+saveBtn.addEventListener("click", function () {
   const content = entryInput.value.trim();
   if (content !== "") {
-    const entryItem = document.createElement("p");
-    entryItem.innerText = content;
-    entryList.appendChild(entryItem);
-    entryInput.value= "";
+    let entries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+    entries.push(content);
+    localStorage.setItem("journalEntries", JSON.stringify(entries));
+    entryInput.value = "";
+    showEntries();
   }
 });
 
+function showEntries() {
+  entryList.innerText = "";
+  const entries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+  if (entries.length === 0) {
+    entryList.innerText = "No entries yet.";
+    return;
+  }
+  entries.forEach((content, index) => {
+    const entryItem = document.createElement("p");
+    entryItem.innerText = (index + 1) + ". " + content;
+    entryList.appendChild(entryItem);
+  });
+}
+
+function saveList(id, storageKey) {
+  const inputs = document.querySelectorAll(`#${id} input`);
+  const data = Array.from(inputs).map(input => input.value);
+  localStorage.setItem(storageKey, JSON.stringify(data));
+}
+
+function loadList(id, storageKey) {
+  const list = document.getElementById(id);
+  list.innerHTML = "";
+  const data = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  data.forEach(item => {
+    const li = document.createElement("li");
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Type here...";
+    input.value = item;
+    input.addEventListener("input", () => saveList(id, storageKey));
+    li.appendChild(input);
+    list.appendChild(li);
+  });
+
+  if (data.length === 0) {
+    
+    for (let i = 0; i < 3; i++) {
+      const li = document.createElement("li");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = "Type here...";
+      input.addEventListener("input", () => saveList(id, storageKey));
+      li.appendChild(input);
+      list.appendChild(li);
+    }
+  }
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  const addBtn = document.querySelectorAll(".add");
-  addBtn.forEach(button => {
-    button.addEventListener("click", function() {
+  showEntries();
+  loadList("happyList", "happyListData");
+  loadList("gratitudeList", "gratitudeListData");
+  loadList("angryList", "angryListData");
+
+  const addBtns = document.querySelectorAll(".add");
+  addBtns.forEach(button => {
+    button.addEventListener("click", function () {
       const parentView = button.closest(".view");
       if (!parentView) return;
       const ul = parentView.querySelector("ul");
@@ -39,6 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const input = document.createElement("input");
       input.type = "text";
       input.placeholder = "Yay! One more.";
+      input.addEventListener("input", () => {
+        if (ul.id === "happyList") saveList("happyList", "happyListData");
+        else if (ul.id === "gratitudeList") saveList("gratitudeList", "gratitudeListData");
+        else if (ul.id === "angryList") saveList("angryList", "angryListData");
+      });
       li.appendChild(input);
       ul.appendChild(li);
     });
