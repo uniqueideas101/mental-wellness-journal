@@ -1,4 +1,4 @@
-const tabs = document.querySelectorAll('.tab');
+niconst tabs = document.querySelectorAll('.tab');
 const views = document.querySelectorAll('.view');
 
 tabs.forEach(tab => {
@@ -104,4 +104,27 @@ document.addEventListener("DOMContentLoaded", () => {
       ul.appendChild(li);
     });
   });
+});
+const analyzeBtn = document.getElementById("analyzeMood");
+const moodResult = document.getElementById("moodResult");
+
+analyzeBtn.addEventListener("click", () => {
+  const text = entryInput.value.toLowerCase();
+  
+  const happyWords = ["happy", "joy", "excited", "grateful", "smile"];
+  const sadWords = ["sad", "down", "lonely", "cry", "tired"];
+  const angryWords = ["angry", "mad", "furious", "annoyed", "hate"];
+  
+  let score = { happy: 0, sad: 0, angry: 0 };
+  
+  happyWords.forEach(word => { if (text.includes(word)) score.happy++; });
+  sadWords.forEach(word => { if (text.includes(word)) score.sad++; });
+  angryWords.forEach(word => { if (text.includes(word)) score.angry++; });
+
+  let mood = "Neutral";
+  if (score.happy > score.sad && score.happy > score.angry) mood = "Happy";
+  else if (score.sad > score.happy && score.sad > score.angry) mood = "Sad";
+  else if (score.angry > score.happy && score.angry > score.sad) mood = "Angry";
+
+  moodResult.innerText = `Mood Detected: ${mood}`;
 });
