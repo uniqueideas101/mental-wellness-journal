@@ -1,4 +1,4 @@
-niconst tabs = document.querySelectorAll('.tab');
+const tabs = document.querySelectorAll('.tab');
 const views = document.querySelectorAll('.view');
 
 tabs.forEach(tab => {
@@ -127,4 +127,36 @@ analyzeBtn.addEventListener("click", () => {
   else if (score.angry > score.happy && score.angry > score.sad) mood = "Angry";
 
   moodResult.innerText = `Mood Detected: ${mood}`;
+});
+const suggestionBox = document.getElementById("suggestionBox");
+
+analyzeBtn.addEventListener("click", () => {
+  const text = entryInput.value.toLowerCase();
+  
+  const happyWords = ["happy", "joy", "excited", "grateful", "smile"];
+  const sadWords = ["sad", "down", "lonely", "cry", "tired"];
+  const angryWords = ["angry", "mad", "furious", "annoyed", "hate"];
+  
+  let score = { happy: 0, sad: 0, angry: 0 };
+  
+  happyWords.forEach(word => { if (text.includes(word)) score.happy++; });
+  sadWords.forEach(word => { if (text.includes(word)) score.sad++; });
+  angryWords.forEach(word => { if (text.includes(word)) score.angry++; });
+
+  let mood = "Neutral";
+  let suggestion = "Keep journaling and stay mindful.";
+  
+  if (score.happy > score.sad && score.happy > score.angry) {
+    mood = "Happy";
+    suggestion = "Great to hear! Keep doing what makes you smile.";
+  } else if (score.sad > score.happy && score.sad > score.angry) {
+    mood = "Sad";
+    suggestion = "Consider going for a walk, talking to a friend, or writing down three things you're grateful for.";
+  } else if (score.angry > score.happy && score.angry > score.sad) {
+    mood = "Angry";
+    suggestion = "Try deep breathing or venting out in your journal. It’s okay to feel this way.";
+  }
+
+  moodResult.innerText = `Mood Detected: ${mood}`;
+  suggestionBox.innerText = `Suggestion: ${suggestion}`;
 });
